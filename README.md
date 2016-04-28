@@ -2,6 +2,8 @@
 
 Experiment starter using Three.js, TweenMax & Webpack.
 
+![Preview](http://lab.arnaudrocca.fr/previews/three-js-starter-kit-preview.gif)
+
 #### Technologies :
 
 * [ES6 - Babel](https://github.com/babel/babel)
