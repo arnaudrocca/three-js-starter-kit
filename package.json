@@ -4,7 +4,7 @@
     "description": "Experiment starter using Three.js, TweenMax, ES6 & Webpack",
     "main": "static/js/bundle.js",
     "scripts": {
-        "start": "webpack-dev-server --progress --colors",
+        "start": "webpack-dev-server --progress --colors --hot --inline",
         "build": "webpack --progress --colors"
     },
     "author": {
