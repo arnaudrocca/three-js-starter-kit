@@ -4,7 +4,8 @@
   "description": "Experiment starter using Three.js, TweenMax, ES6 & Webpack",
   "main": "static/bundle.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --progress --colors",
+    "build": "webpack --progress --colors"
   },
   "author": {
     "name": "Arnaud Rocca",

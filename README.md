@@ -1,6 +1,6 @@
 # Three.js - Starter kit
 
-Experiment starter using Three.js, TweenMax & Webpack.
+Experiment starter kit using Three.js, TweenMax & Webpack.
 
 ![Preview](http://lab.arnaudrocca.fr/previews/three-js-starter-kit-preview.gif)
 
@@ -8,7 +8,7 @@ Experiment starter using Three.js, TweenMax & Webpack.
 
 * [ES6 - Babel](https://github.com/babel/babel)
 * [Three.js](https://github.com/mrdoob/three.js)
-* [GSAP - Tweenmax](http://greensock.com/tweenmax)
+* [GSAP - TweenMax](http://greensock.com/tweenmax)
 
 #### Install :
 
@@ -22,7 +22,7 @@ npm install
 
 #### Development :
 
-Start the webpack-server at http://localhost:8080/
+Start the webpack-dev-server at http://localhost:8080/
 ```shell
 npm start
 ```
