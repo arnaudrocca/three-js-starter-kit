@@ -2,7 +2,7 @@
 
 Experiment starter kit using Three.js, TweenMax & Webpack.
 
-![Preview](http://lab.arnaudrocca.fr/previews/three-js-starter-kit-preview.gif)
+![Preview](http://lab.arnaudrocca.fr/previews/three-js-starter-kit-preview.png)
 
 #### Technologies :
 

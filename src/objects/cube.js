@@ -1,3 +1,5 @@
+import THREE from 'three'
+
 class Cube {
 
     /**
@@ -8,7 +10,7 @@ class Cube {
         this.geometry = new THREE.BoxGeometry(size, size, size),
         this.material = new THREE.MeshBasicMaterial({
             wireframe: true,
-            wireframeLinewidth: 2
+            color: 0x0000FF
         });
 
         this.mesh = new THREE.Mesh(this.geometry, this.material);
