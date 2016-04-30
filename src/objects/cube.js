@@ -5,9 +5,12 @@ class Cube {
     /**
      * @constructor
      */
-    constructor(size) {
+    constructor() {
 
-        this.geometry = new THREE.BoxGeometry(size, size, size),
+        this.size = 200;
+        this.rotation = .01;
+
+        this.geometry = new THREE.BoxGeometry(this.size, this.size, this.size);
         this.material = new THREE.MeshBasicMaterial({
             wireframe: true,
             color: 0x0000FF
@@ -24,11 +27,9 @@ class Cube {
      */
     update() {
 
-        const rotation = .01;
-
-        this.mesh.rotation.x += rotation;
-        this.mesh.rotation.y += rotation;
-        this.mesh.rotation.z += rotation;
+        this.mesh.rotation.x += this.rotation;
+        this.mesh.rotation.y += this.rotation;
+        this.mesh.rotation.z += this.rotation;
 
     }
 
