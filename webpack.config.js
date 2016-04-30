@@ -3,9 +3,9 @@ module.exports = {
         './src/index.js'
     ],
     output: {
-        path: './static/js',
+        path: './static',
         filename: 'bundle.js',
-        publicPath: '/js'
+        publicPath: '/'
     },
     devServer: {
         inline: true,
