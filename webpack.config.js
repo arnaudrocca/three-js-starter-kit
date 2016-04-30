@@ -11,13 +11,21 @@ module.exports = {
         inline: true,
         contentBase: './static'
     },
+    resolve: {
+        modulesDirectories: ['node_modules'],
+        root: '',
+        alias: {
+            TweenMax: __dirname + '/node_modules/gsap/src/uncompressed/TweenMax.js'
+        }
+    },
     module: {
         loaders: [
             {
                 test: /\.js?$/,
                 loader: 'babel',
                 query: {
-                    presets: ['es2015']
+                    presets: ['es2015'],
+                    plugins: ['add-module-exports']
                 }
             },
             {

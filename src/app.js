@@ -1,3 +1,4 @@
+import 'TweenMax'
 import Scene from './scene/scene'
 import Cube from './objects/cube'
 
