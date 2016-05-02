@@ -3,4 +3,4 @@
 *.log*
 *.DS_Store
 
-/static/js/bundle.js
+/static/bundle.js
