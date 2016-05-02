@@ -29,7 +29,7 @@ npm start
 
 #### Production :
 
-Build a bundled file outputted here : static/js/bundle.js
+Build a bundled file outputted here : static/bundle.js
 ```shell
 npm run build
 ```
