@@ -9,6 +9,7 @@ Experiment starter kit using Three.js, TweenMax & Webpack.
 * [ES6 - Babel](https://github.com/babel/babel)
 * [Three.js](https://github.com/mrdoob/three.js)
 * [GSAP - TweenMax](http://greensock.com/tweenmax)
+* [Webpack](https://github.com/webpack/webpack)
 
 #### Install :
 
