@@ -1,7 +1,7 @@
 {
   "name": "three-js-starter-kit",
   "version": "1.0.0",
-  "description": "Experiment starter using Three.js, TweenMax, ES6 & Webpack",
+  "description": "Experiment starter using Three.js, Wagner, TweenMax, ES6 & Webpack",
   "main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --colors --hot --inline --config webpack.config.js",
