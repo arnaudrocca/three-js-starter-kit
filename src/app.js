@@ -1,6 +1,6 @@
 import 'TweenMax'
-import Scene from './scene/scene'
-import Cube from './objects/cube'
+import Scene from './utils/Scene'
+import Cube from './objects/Cube'
 
 class App {
 

@@ -1,6 +1,7 @@
 import THREE from 'three'
 import Wagner from '@superguigui/wagner'
 import BloomPass from '@superguigui/wagner/src/passes/bloom/MultiPassBloomPass'
+import OrbitControls from './OrbitControls'
 
 class Scene {
 
@@ -20,6 +21,8 @@ class Scene {
 
         this.camera = new THREE.PerspectiveCamera(50, this.width / this.height, 1, 2000);
         this.camera.position.z = 1000;
+
+        this.controls = new OrbitControls(this.camera);
 
         this.initPostProcessing();
 
@@ -73,6 +76,8 @@ class Scene {
     render() {
 
         this.renderer.autoClearColor = true;
+        // this.renderer.render(this.scene, this.camera);
+
         this.composer.reset();
         this.composer.render(this.scene, this.camera);
         this.composer.pass(this.bloomPass);
@@ -88,6 +93,9 @@ class Scene {
      * @param {number} newHeight
      */
     resize(newWidth, newHeight) {
+
+        this.width = newWidth;
+        this.height = newHeight;
 
         this.camera.aspect = newWidth / newHeight;
         this.camera.updateProjectionMatrix();
