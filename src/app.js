@@ -12,7 +12,7 @@ class App {
         this.width = window.innerWidth;
         this.height = window.innerHeight;
 
-        this.scene = new Scene();
+        this.scene = new Scene(this.width, this.height);
         this.cube = new Cube();
 
         this.scene.add(this.cube.mesh);

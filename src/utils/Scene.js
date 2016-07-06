@@ -8,18 +8,15 @@ class Scene {
     /**
      * @constructor
      */
-    constructor() {
-
-        this.width = window.innerWidth;
-        this.height = window.innerHeight;
+    constructor(width, height) {
 
         this.scene = new THREE.Scene();
 
         this.renderer = new THREE.WebGLRenderer({antialias: true});
-        this.renderer.setSize(this.width, this.height);
+        this.renderer.setSize(width, height);
         this.renderer.setClearColor(0x111111);
 
-        this.camera = new THREE.PerspectiveCamera(50, this.width / this.height, 1, 2000);
+        this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 2000);
         this.camera.position.z = 1000;
 
         this.controls = new OrbitControls(this.camera);
@@ -93,9 +90,6 @@ class Scene {
      * @param {number} newHeight
      */
     resize(newWidth, newHeight) {
-
-        this.width = newWidth;
-        this.height = newHeight;
 
         this.camera.aspect = newWidth / newHeight;
         this.camera.updateProjectionMatrix();
