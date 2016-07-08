@@ -9,4 +9,5 @@ html, body {
 canvas {
     position: absolute;
     display: block;
+    cursor: move;
 }
