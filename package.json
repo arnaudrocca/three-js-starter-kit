@@ -19,10 +19,6 @@
   },
   "homepage": "https://github.com/ArnaudRocca/three-js-starter-kit",
   "dependencies": {
-    "gsap": "^1.18.4",
-    "three": "^0.76.1"
-  },
-  "devDependencies": {
     "@superguigui/wagner": "^0.1.21",
     "babel-core": "^6.7.7",
     "babel-loader": "^6.2.4",
@@ -33,9 +29,12 @@
     "glslify": "^5.0.2",
     "glslify-fancy-imports": "^1.0.1",
     "glslify-hex": "^2.0.1",
+    "gsap": "^1.18.4",
     "html-webpack-plugin": "^2.16.1",
     "ify-loader": "^1.0.3",
+    "lodash.bindall": "^4.4.0",
     "raw-loader": "^0.5.1",
+    "three": "^0.76.1",
     "three-orbit-controls": "^72.0.0",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"

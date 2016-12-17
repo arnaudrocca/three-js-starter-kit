@@ -67,6 +67,22 @@ class Scene {
 
     /**
      * @method
+     * @name resize
+     * @description Resize the scene according to screen size
+     * @param {number} newWidth
+     * @param {number} newHeight
+     */
+    resize(newWidth, newHeight) {
+
+        this.camera.aspect = newWidth / newHeight;
+        this.camera.updateProjectionMatrix();
+
+        this.renderer.setSize(newWidth, newHeight);
+
+    }
+
+    /**
+     * @method
      * @name render
      * @description Renders/Draw the scene
      */
@@ -79,22 +95,6 @@ class Scene {
         this.composer.render(this.scene, this.camera);
         this.composer.pass(this.bloomPass);
         this.composer.toScreen();
-
-    }
-
-    /**
-     * @method
-     * @name resize
-     * @description Resize the scene according to screen size
-     * @param {number} newWidth
-     * @param {number} newHeight
-     */
-    resize(newWidth, newHeight) {
-
-        this.camera.aspect = newWidth / newHeight;
-        this.camera.updateProjectionMatrix();
-
-        this.renderer.setSize(newWidth, newHeight);
 
     }
 

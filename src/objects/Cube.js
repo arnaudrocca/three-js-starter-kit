@@ -8,7 +8,7 @@ class Cube {
     constructor() {
 
         this.size = 200;
-        this.rotationSpeed = .01;
+        this.rotationSpeed = 1;
 
         this.geometry = new THREE.BoxGeometry(this.size, this.size, this.size);
         this.material = new THREE.MeshBasicMaterial({
@@ -23,13 +23,14 @@ class Cube {
     /**
      * @method
      * @name update
-     * @description Triggered on every TweenMax tick
+     * @description Triggered on every frame
+     * @param {number} dt - DELTA_TIME
      */
-    update() {
+    update(dt) {
 
-        this.mesh.rotation.x += this.rotationSpeed;
-        this.mesh.rotation.y += this.rotationSpeed;
-        this.mesh.rotation.z += this.rotationSpeed;
+        this.mesh.rotation.x += this.rotationSpeed * dt;
+        this.mesh.rotation.y += this.rotationSpeed * dt;
+        this.mesh.rotation.z += this.rotationSpeed * dt;
 
     }
 
