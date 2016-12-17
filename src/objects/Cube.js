@@ -1,19 +1,19 @@
 import THREE from 'three'
 
-class Cube {
+export default class Cube {
 
     /**
      * @constructor
      */
     constructor() {
 
-        this.size = 200;
+        this.size = 10;
         this.rotationSpeed = 1;
 
         this.geometry = new THREE.BoxGeometry(this.size, this.size, this.size);
         this.material = new THREE.MeshBasicMaterial({
-            wireframe: true,
-            color: 0x0000FF
+            color: 0x0000FF,
+            wireframe: true
         });
 
         this.mesh = new THREE.Mesh(this.geometry, this.material);
@@ -35,5 +35,3 @@ class Cube {
     }
 
 }
-
-export default Cube

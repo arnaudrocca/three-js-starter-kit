@@ -39,6 +39,9 @@
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   },
+  "devDependencies": {
+    "stats.js": "^0.17.0"
+  },
   "glslify": {
     "transform": [
       "glslify-fancy-imports",

@@ -3,25 +3,58 @@ import Wagner from '@superguigui/wagner'
 import BloomPass from '@superguigui/wagner/src/passes/bloom/MultiPassBloomPass'
 import OrbitControls from './OrbitControls'
 
-class Scene {
+export default class Scene extends THREE.Scene {
 
     /**
      * @constructor
+     * @param {Object} options
+     * @param {number} width
+     * @param {number} height
      */
-    constructor(width, height) {
+    constructor(options = {}, width, height) {
 
-        this.scene = new THREE.Scene();
+        super();
+
+        this.options = options;
 
         this.renderer = new THREE.WebGLRenderer({antialias: true});
         this.renderer.setSize(width, height);
-        this.renderer.setClearColor(0x111111);
+        this.renderer.setPixelRatio(window.devicePixelRatio);
 
-        this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 2000);
-        this.camera.position.z = 1000;
+        this.renderer.setClearColor(0x111111, 1);
+        this.renderer.autoClear = false;
+        this.renderer.gammaInput = true;
+        this.renderer.gammaOutput = true;
 
+        this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 1000);
+        this.camera.position.z = 50;
         this.controls = new OrbitControls(this.camera);
 
+        this.initLights();
+        this.initHelpers();
         this.initPostProcessing();
+
+    }
+
+    /**
+     * @method
+     * @name initLights
+     */
+    initLights() {
+
+        this.ambientLight = new THREE.AmbientLight(0xFFFFFF, 1);
+
+    }
+
+    /**
+     * @method
+     * @name initHelpers
+     */
+    initHelpers() {
+
+        this.axisHelper = new THREE.AxisHelper(10);
+        this.add(this.axisHelper);
+        this.axisHelper.visible = this.options.useHelpers || false;
 
     }
 
@@ -39,29 +72,7 @@ class Scene {
             blurAmount: 1
         });
 
-    }
-
-    /**
-     * @method
-     * @name add
-     * @description Add a child to the scene
-     * @param {object} child - A THREE object
-     */
-    add(child) {
-
-        this.scene.add(child);
-
-    }
-
-    /**
-     * @method
-     * @name remove
-     * @description Remove a child from the scene
-     * @param {object} child - A THREE object
-     */
-    remove(child) {
-
-        this.scene.remove(child);
+        this.usePostProcessing = this.options.usePostProcessing || false;
 
     }
 
@@ -78,6 +89,7 @@ class Scene {
         this.camera.updateProjectionMatrix();
 
         this.renderer.setSize(newWidth, newHeight);
+        this.composer.setSize(newWidth, newHeight);
 
     }
 
@@ -88,16 +100,13 @@ class Scene {
      */
     render() {
 
-        this.renderer.autoClearColor = true;
-        // this.renderer.render(this.scene, this.camera);
-
         this.composer.reset();
-        this.composer.render(this.scene, this.camera);
-        this.composer.pass(this.bloomPass);
+        this.composer.render(this, this.camera);
+        if (this.options.usePostProcessing === true) {
+            this.composer.pass(this.bloomPass);
+        }
         this.composer.toScreen();
 
     }
 
 }
-
-export default Scene

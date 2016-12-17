@@ -1,15 +1,18 @@
 import 'TweenMax'
 import THREE from 'three'
+import Stats from 'stats.js'
 import bindAll from 'lodash.bindall'
 import Scene from './utils/Scene'
 import Cube from './objects/Cube'
 
-class App {
+export default class App {
 
     /**
      * @constructor
      */
     constructor() {
+
+        const $root = document.body.querySelector('.app');
 
         this.width = window.innerWidth;
         this.height = window.innerHeight;
@@ -18,12 +21,13 @@ class App {
         this.CURRENT_TIME = 0;
         this.clock = new THREE.Clock();
 
-        this.scene = new Scene(this.width, this.height);
+        this.stats = new Stats();
+        $root.appendChild(this.stats.dom);
+
+        this.scene = new Scene({usePostProcessing: true, useHelpers: true}, this.width, this.height);
         this.cube = new Cube();
 
         this.scene.add(this.cube.mesh);
-
-        const $root = document.body.querySelector('.app');
         $root.appendChild(this.scene.renderer.domElement);
 
         bindAll(this, ['resizeHandler', 'update']);
@@ -65,17 +69,18 @@ class App {
      */
     update() {
 
+        this.stats.begin();
+
         this.DELTA_TIME = this.clock.getDelta();
         this.CURRENT_TIME = this.clock.getElapsedTime();
 
         this.cube.update(this.DELTA_TIME);
-
         this.scene.render();
+
+        this.stats.end();
 
         requestAnimationFrame(this.update);
 
     }
 
 }
-
-export default App
