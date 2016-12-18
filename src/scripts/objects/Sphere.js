@@ -1,22 +1,25 @@
-import THREE from 'three'
+import * as THREE from 'three'
 
-export default class Cube {
+export default class Sphere {
 
     /**
      * @constructor
+     * @param {Object} options
      */
-    constructor() {
+    constructor(options = {}) {
 
-        this.size = 10;
+        this.radius = 10;
+        this.segments = 10;
         this.rotationSpeed = 1;
 
-        this.geometry = new THREE.BoxGeometry(this.size, this.size, this.size);
-        this.material = new THREE.MeshBasicMaterial({
-            color: 0x0000FF,
-            wireframe: true
+        this.geometry = new THREE.SphereGeometry(this.radius, this.segments, this.segments);
+        this.material = new THREE.MeshPhongMaterial({
+            color: 0x00007F,
+            shading: THREE.FlatShading
         });
 
         this.mesh = new THREE.Mesh(this.geometry, this.material);
+        this.mesh.namee = 'sphere';
 
     }
 

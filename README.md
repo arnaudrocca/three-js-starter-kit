@@ -2,8 +2,6 @@
 
 Experiment starter kit using Three.js, Wagner, TweenMax & Webpack.
 
-![Preview](http://lab.arnaudrocca.fr/previews/three-js-starter-kit-preview.png)
-
 #### Technologies :
 
 * [ES6 - Babel](https://github.com/babel/babel)
@@ -11,6 +9,7 @@ Experiment starter kit using Three.js, Wagner, TweenMax & Webpack.
 * [Wagner](https://github.com/superguigui/Wagner)
 * [GSAP - TweenMax](http://greensock.com/tweenmax)
 * [Webpack](https://github.com/webpack/webpack)
+* [Stylus](https://github.com/stylus/stylus)
 
 #### Install :
 

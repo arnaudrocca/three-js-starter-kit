@@ -1,10 +1,13 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var precss = require('precss');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
     entry: [
-        './src/index.js'
+        './src/scripts/index.js',
+        './src/styles/main.styl'
     ],
     output: {
         path: path.join(__dirname, 'build'),
@@ -25,7 +28,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'src/index.tpl.html',
+            template: 'src/templates/index.tpl.html',
             inject: 'body',
             filename: 'index.html'
         }),
@@ -50,14 +53,38 @@ module.exports = {
                 }
             },
             {
-               test: /node_modules/,
-               loader: 'ify'
-             },
-             {
-               test: /\.(glsl|frag|vert)$/,
-               exclude: /node_modules/,
-               loader: 'raw!glslify'
-             }
+                test: /node_modules/,
+                loader: 'ify'
+            },
+            {
+                test: /\.(glsl|frag|vert)$/,
+                exclude: /node_modules/,
+                loader: 'raw!glslify'
+            },
+            {
+                test: /\.styl$/,
+                exclude: /node_modules/,
+                loader: 'style!css!postcss!stylus'
+            },
+            {
+                test: /\.json$/,
+                exclude: /node_modules/,
+                loader: 'json'
+            },
+            {
+                test: /\.(png|jpg|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+                exclude: /node_modules/,
+                loader: 'file-loader'
+            }
         ]
+    },
+    postcss: function() {
+        return [
+            precss,
+            autoprefixer({
+                add: true,
+                remove: false
+            })
+        ];
     }
 };

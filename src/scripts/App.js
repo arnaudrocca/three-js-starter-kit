@@ -1,9 +1,9 @@
 import 'TweenMax'
-import THREE from 'three'
+import * as THREE from 'three'
 import Stats from 'stats.js'
 import bindAll from 'lodash.bindall'
 import Scene from './utils/Scene'
-import Cube from './objects/Cube'
+import Sphere from './objects/Sphere'
 
 export default class App {
 
@@ -24,10 +24,11 @@ export default class App {
         this.stats = new Stats();
         $root.appendChild(this.stats.dom);
 
-        this.scene = new Scene({usePostProcessing: true, useHelpers: true}, this.width, this.height);
-        this.cube = new Cube();
+        this.scene = new Scene({usePostProcessing: true}, this.width, this.height);
 
-        this.scene.add(this.cube.mesh);
+        this.sphere = new Sphere();
+        this.scene.add(this.sphere.mesh);
+
         $root.appendChild(this.scene.renderer.domElement);
 
         bindAll(this, ['resizeHandler', 'update']);
@@ -74,7 +75,7 @@ export default class App {
         this.DELTA_TIME = this.clock.getDelta();
         this.CURRENT_TIME = this.clock.getElapsedTime();
 
-        this.cube.update(this.DELTA_TIME);
+        this.sphere.update(this.DELTA_TIME);
         this.scene.render();
 
         this.stats.end();

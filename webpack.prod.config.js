@@ -2,15 +2,19 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+var precss = require('precss');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
     entry: [
-        './src/index.js'
+        './src/scripts/index.js',
+        './src/styles/main.styl'
     ],
     output: {
         path: path.join(__dirname, 'build'),
-        filename: 'bundle.js',
+        filename: '[name]-[hash].min.js',
         publicPath: '/'
     },
     devServer: {
@@ -27,7 +31,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'src/index.tpl.html',
+            template: 'src/templates/index.tpl.html',
             inject: 'body',
             filename: 'index.html'
         }),
@@ -43,9 +47,9 @@ module.exports = {
             compress: {
                 warnings: false,
                 drop_console: true
-                // pure_funcs: ['console.log']
             }
         }),
+        new ExtractTextPlugin('[name]-[hash].min.css', { allChunks: true }),
         new CleanWebpackPlugin(['build'], { root: __dirname })
     ],
     module: {
@@ -67,7 +71,31 @@ module.exports = {
                 test: /\.(glsl|frag|vert)$/,
                 exclude: /node_modules/,
                 loader: 'raw!glslify'
+            },
+            {
+                test: /\.styl$/,
+                exclude: /node_modules/,
+                loader: ExtractTextPlugin.extract('style', 'css!postcss!stylus')
+            },
+            {
+                test: /\.json$/,
+                exclude: /node_modules/,
+                loader: 'json'
+            },
+            {
+                test: /\.(png|jpg|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+                exclude: /node_modules/,
+                loader: 'file-loader'
             }
         ]
+    },
+    postcss: function() {
+        return [
+            precss,
+            autoprefixer({
+                add: true,
+                remove: true
+            })
+        ];
     }
 };

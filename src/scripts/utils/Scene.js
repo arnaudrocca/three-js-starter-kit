@@ -1,6 +1,6 @@
-import THREE from 'three'
+import * as THREE from 'three'
 import Wagner from '@superguigui/wagner'
-import BloomPass from '@superguigui/wagner/src/passes/bloom/MultiPassBloomPass'
+import VignettePass from '@superguigui/wagner/src/passes/vignette/VignettePass'
 import OrbitControls from './OrbitControls'
 
 export default class Scene extends THREE.Scene {
@@ -21,7 +21,7 @@ export default class Scene extends THREE.Scene {
         this.renderer.setSize(width, height);
         this.renderer.setPixelRatio(window.devicePixelRatio);
 
-        this.renderer.setClearColor(0x111111, 1);
+        this.renderer.setClearColor(0xFFFFFF, 1);
         this.renderer.autoClear = false;
         this.renderer.gammaInput = true;
         this.renderer.gammaOutput = true;
@@ -31,7 +31,6 @@ export default class Scene extends THREE.Scene {
         this.controls = new OrbitControls(this.camera);
 
         this.initLights();
-        this.initHelpers();
         this.initPostProcessing();
 
     }
@@ -43,18 +42,11 @@ export default class Scene extends THREE.Scene {
     initLights() {
 
         this.ambientLight = new THREE.AmbientLight(0xFFFFFF, 1);
+        this.add(this.ambientLight);
 
-    }
-
-    /**
-     * @method
-     * @name initHelpers
-     */
-    initHelpers() {
-
-        this.axisHelper = new THREE.AxisHelper(10);
-        this.add(this.axisHelper);
-        this.axisHelper.visible = this.options.useHelpers || false;
+        this.pointLight = new THREE.PointLight(0xFFFFFF, 1);
+        this.pointLight.position.set(100, 100, 100);
+        this.add(this.pointLight);
 
     }
 
@@ -66,13 +58,10 @@ export default class Scene extends THREE.Scene {
 
         this.composer = new Wagner.Composer(this.renderer);
 
-        this.bloomPass = new BloomPass({
-            applyZoomBlur: true,
-            zoomBlurStrength: 2,
-            blurAmount: 1
+        this.vignettePass = new VignettePass({
+            boost: 1.0,
+            reduction: 1.5
         });
-
-        this.usePostProcessing = this.options.usePostProcessing || false;
 
     }
 
@@ -103,7 +92,7 @@ export default class Scene extends THREE.Scene {
         this.composer.reset();
         this.composer.render(this, this.camera);
         if (this.options.usePostProcessing === true) {
-            this.composer.pass(this.bloomPass);
+            this.composer.pass(this.vignettePass);
         }
         this.composer.toScreen();
 
