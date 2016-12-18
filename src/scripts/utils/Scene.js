@@ -28,7 +28,7 @@ export default class Scene extends THREE.Scene {
 
         this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 1000);
         this.camera.position.z = 50;
-        this.controls = new OrbitControls(this.camera);
+        // this.controls = new OrbitControls(this.camera);
 
         this.initLights();
         this.initPostProcessing();
