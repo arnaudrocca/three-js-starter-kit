@@ -1,13 +1,13 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var precss = require('precss');
-var autoprefixer = require('autoprefixer');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 
-module.exports = {
+const config = {
     entry: [
         './src/scripts/index.js',
         './src/styles/main.styl'
@@ -89,7 +89,7 @@ module.exports = {
             }
         ]
     },
-    postcss: function() {
+    postcss: () => {
         return [
             precss,
             autoprefixer({
@@ -99,3 +99,5 @@ module.exports = {
         ];
     }
 };
+
+module.exports = config;

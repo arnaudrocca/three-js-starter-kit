@@ -1,10 +1,10 @@
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var precss = require('precss');
-var autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 
-module.exports = {
+const config = {
     entry: [
         './src/scripts/index.js',
         './src/styles/main.styl'
@@ -44,7 +44,7 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js?$/,
+                test: /\.js$/,
                 loader: 'babel',
                 exclude: /node_modules/,
                 query: {
@@ -78,7 +78,7 @@ module.exports = {
             }
         ]
     },
-    postcss: function() {
+    postcss: () => {
         return [
             precss,
             autoprefixer({
@@ -88,3 +88,5 @@ module.exports = {
         ];
     }
 };
+
+module.exports = config;
