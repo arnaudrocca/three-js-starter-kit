@@ -27,7 +27,8 @@ export default class Scene extends THREE.Scene {
         this.renderer.gammaOutput = true;
 
         this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 1000);
-        this.camera.position.z = 50;
+        this.camera.position.set(0, 0, 50);
+        this.camera.lookAt(new THREE.Vector3(0, 0, 0));
         // this.controls = new OrbitControls(this.camera);
 
         this.initLights();

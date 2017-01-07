@@ -11,7 +11,7 @@ export default class App {
      * @constructor
      */
     constructor() {
-
+        
         const $root = document.body.querySelector('.app');
 
         this.width = window.innerWidth;
