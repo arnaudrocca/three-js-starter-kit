@@ -25,8 +25,8 @@
     "glslify-hex": "^2.0.1",
     "gsap": "^1.18.4",
     "lodash.bindall": "^4.4.0",
-    "three": "^0.76.1",
-    "three-orbit-controls": "^72.0.0"
+    "orbit-controls-es6": "^1.0.8",
+    "three": "^0.76.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.4",

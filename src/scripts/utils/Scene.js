@@ -1,7 +1,7 @@
 import * as THREE from 'three'
+import OrbitControls from 'orbit-controls-es6'
 import Wagner from '@superguigui/wagner'
 import VignettePass from '@superguigui/wagner/src/passes/vignette/VignettePass'
-import OrbitControls from './OrbitControls'
 
 export default class Scene extends THREE.Scene {
 
@@ -29,7 +29,9 @@ export default class Scene extends THREE.Scene {
         this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 1000);
         this.camera.position.set(0, 0, 50);
         this.camera.lookAt(new THREE.Vector3(0, 0, 0));
-        // this.controls = new OrbitControls(this.camera);
+
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+        this.controls.enabled = true;
 
         this.initLights();
         this.initPostProcessing();
