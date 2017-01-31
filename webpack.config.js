@@ -1,6 +1,6 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require('path');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 
@@ -13,6 +13,9 @@ const config = {
         path: path.join(__dirname, 'build'),
         filename: 'bundle.js',
         publicPath: '/'
+    },
+    node: {
+        fs: 'empty'
     },
     devServer: {
         inline: true,

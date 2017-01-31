@@ -17,6 +17,9 @@ const config = {
         filename: '[name]-[hash].min.js',
         publicPath: '/'
     },
+    node: {
+        fs: 'empty'
+    },
     devServer: {
         inline: true,
         contentBase: './static',
