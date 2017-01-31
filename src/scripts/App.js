@@ -1,9 +1,9 @@
-import 'TweenMax'
-import * as THREE from 'three'
-import Stats from 'stats.js'
-import bindAll from 'lodash.bindall'
-import Scene from './utils/Scene'
-import Sphere from './objects/Sphere'
+import 'TweenMax';
+import * as THREE from 'three';
+import Stats from 'stats.js';
+import bindAll from 'lodash.bindall';
+import Scene from './utils/Scene';
+import Sphere from './objects/Sphere';
 
 export default class App {
 
@@ -24,7 +24,7 @@ export default class App {
         this.stats = new Stats();
         $root.appendChild(this.stats.dom);
 
-        this.scene = new Scene({usePostProcessing: true}, this.width, this.height);
+        this.scene = new Scene({ usePostProcessing: true }, this.width, this.height);
 
         this.sphere = new Sphere();
         this.scene.add(this.sphere.mesh);
@@ -75,7 +75,7 @@ export default class App {
         this.DELTA_TIME = this.clock.getDelta();
         this.CURRENT_TIME = this.clock.getElapsedTime();
 
-        this.sphere.update(this.DELTA_TIME);
+        this.sphere.update(this.CURRENT_TIME, this.DELTA_TIME);
         this.scene.render();
 
         this.stats.end();

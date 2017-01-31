@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+import * as THREE from 'three';
 
 export default class Sphere {
 
@@ -27,13 +27,14 @@ export default class Sphere {
      * @method
      * @name update
      * @description Triggered on every frame
-     * @param {number} dt - DELTA_TIME
+     * @param {number} time - CURRENT_TIME
+     * @param {number} delta - DELTA_TIME
      */
-    update(dt) {
+    update(time, delta) {
 
-        this.mesh.rotation.x += this.rotationSpeed * dt;
-        this.mesh.rotation.y += this.rotationSpeed * dt;
-        this.mesh.rotation.z += this.rotationSpeed * dt;
+        this.mesh.rotation.x += this.rotationSpeed * delta;
+        this.mesh.rotation.y += this.rotationSpeed * delta;
+        this.mesh.rotation.z += this.rotationSpeed * delta;
 
     }
 

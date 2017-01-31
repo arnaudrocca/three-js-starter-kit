@@ -1,7 +1,7 @@
-import * as THREE from 'three'
-import OrbitControls from 'orbit-controls-es6'
-import Wagner from '@superguigui/wagner'
-import VignettePass from '@superguigui/wagner/src/passes/vignette/VignettePass'
+import * as THREE from 'three';
+import OrbitControls from 'orbit-controls-es6';
+import Wagner from '@superguigui/wagner';
+import VignettePass from '@superguigui/wagner/src/passes/vignette/VignettePass';
 
 export default class Scene extends THREE.Scene {
 
@@ -17,7 +17,7 @@ export default class Scene extends THREE.Scene {
 
         this.options = options;
 
-        this.renderer = new THREE.WebGLRenderer({antialias: true});
+        this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(width, height);
         this.renderer.setPixelRatio(window.devicePixelRatio);
 

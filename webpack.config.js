@@ -20,8 +20,8 @@ const config = {
         outputPath: path.join(__dirname, 'build')
     },
     resolve: {
-        modulesDirectories: ['node_modules'],
         root: '',
+        modulesDirectories: ['node_modules'],
         alias: {
             TweenMax: __dirname + '/node_modules/gsap/src/uncompressed/TweenMax.js'
         }
@@ -37,7 +37,7 @@ const config = {
                 from: 'static'
             }],
             {
-                ignore: ['.DS_Store', '.keep']
+                ignore: ['.DS_Store']
             }
         ),
     ],
